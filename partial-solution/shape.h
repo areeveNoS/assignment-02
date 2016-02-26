@@ -95,7 +95,7 @@ class Shape {
 
         Shape(const std::string & type="empty");
         /**
-         * The constructor.
+         * The constructor.`
          *
          * Must initialize `type_`, and `type_art_`.
          *

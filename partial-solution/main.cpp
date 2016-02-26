@@ -10,6 +10,7 @@
  * - We also include our test functions here, since there aren't that many.
  */
 
+#include "buffer.h"
 #include "constants.h"
 #include "neighborhood.h"
 #include "shape.h"
@@ -21,28 +22,28 @@
  * Test the `Buffer` object by creating one, drawing a few things on it, and
  * then rendering it to the screen.
  */
-void test_buffer() {
-    Buffer b(TERM_SIZE_X, TERM_SIZE_Y);
-
-    // draw ellipse
-    for (int y=0; y < b.size_y; y++)
-        for (int x=0; x < b.size_x; x++)
-            if ( (x-40)*(x-40) + (y-10)*(y-10) == 50)
-                b.set(x, y, '*');
-
-    // draw boarder
-    for (int y=0; y < b.size_y; y++) {
-        b.set(0, y, '|');
-        b.set(b.size_x-1, y, '|');
-    }
-    for (int x=0; x < b.size_x; x++) {
-        b.set(x, 0, '-');
-        b.set(x, b.size_y-1, '-');
-    }
-
-    // render to screen
-    b.draw();
-}
+//void test_buffer() {
+//    Buffer b(TERM_SIZE_X, TERM_SIZE_Y);
+//
+//    // draw ellipse
+//    for (int y=0; y < b.size_y; y++)
+//        for (int x=0; x < b.size_x; x++)
+//            if ( (x-40)*(x-40) + (y-10)*(y-10) == 50)
+//                b.set(x, y, '*');
+//
+//    // draw boarder
+//    for (int y=0; y < b.size_y; y++) {
+//        b.set(0, y, '|');
+//        b.set(b.size_x-1, y, '|');
+//    }
+//    for (int x=0; x < b.size_x; x++) {
+//        b.set(x, 0, '-');
+//        b.set(x, b.size_y-1, '-');
+//    }
+//
+//    // render to screen
+//    b.draw();
+//}
 
 /**
  * Test the `Shape` object by creating one of each type (besides "empty"), and
@@ -51,14 +52,14 @@ void test_buffer() {
 void test_shape() {
     Buffer b(TERM_SIZE_X, TERM_SIZE_Y);
 
-    Shape triangle("triangle");
+    Shape triangle("triangle"); 
     Shape square("square");
 
     // draw shapes
     for (int y = 0; y <= b.size_y - Shape::size_y; y += Shape::size_y) {
         for (int x = 0; x <= b.size_x - Shape::size_x*2; x += Shape::size_x*2) {
             triangle.drawToBuffer(b, x + Shape::size_x*((y+0)%2), y);
-            square.drawToBuffer(b, x + Shape::size_x*((y+1)%2), y);
+            //square.drawToBuffer(b, x + Shape::size_x*((y+1)%2), y);
         }
     }
 
@@ -66,18 +67,18 @@ void test_shape() {
     b.draw();
 }
 
-// ----------------------------------------------------------------------------
+ //----------------------------------------------------------------------------
 
 /**
  * Notes:
  * - Comment out the parts you aren't currently using.
  */
 int main() {
-//     test_buffer();
+    // test_buffer();
 
     // ------------------------------------------------------------------------
 
-//     test_shape();
+    //test_shape();
 
     // ------------------------------------------------------------------------
 
